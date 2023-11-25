@@ -117,6 +117,7 @@ def main():
         )
 
     print("*" * 150)
+    sleep(10)
 
 
 # uruchomienie programu
