@@ -12,17 +12,34 @@ def main():
 
     print("")
     print("-" * 50)
-    x = input("Podaj zakres mnożenia liczb od 1 do 10 ? ")
-    il_powt = input("Ile tur chcesz zrobić (minimum 5)? ")
+    z = input("Podaj dolną granicę mnożenia (1 - 10): ")
+    x = input("Podaj górną granicę mnożenia (1 - 10): ")
+    il_powt = input("Ile tur chcesz zrobić (minimum 5): ")
+    print("\n")
+
+    
 
     # sprawdzanie poprawności
+    try:
+        dol_granica = int(z)
+        if dol_granica <1 or dol_granica > 10:
+            print("Niepoprawna wartość !!!")
+            print("Sprubój jeszcze raz, uruchom ponownie program.")
+            sleep(3)
+            sys.exit("Wartość dol_granica jest zaduża lub zamała")
+    except:
+        print("Niepoprawna wartość !!!")
+        print("Sprubój jeszcze raz, uruchom ponownie program.")
+        sleep(3)
+        sys.exit("Zła wartość dol_granica, prawdopodobnie user użył zamiast liczby litery!")
+
     try:
         zakres = int(x)
         if zakres < 1 or zakres > 10:
             print("Niepoprawna wartość !!!")
             print("Sprubój jeszcze raz, uruchom ponownie program.")
             sleep(3)
-            exit("Wartość x jest zaduża lub zamała")
+            sys.exit("Wartość zakres jest zaduża lub zamała")
     except:
         print("Niepoprawna wartość !!!")
         print("Sprubój jeszcze raz, uruchom ponownie program.")
@@ -56,8 +73,8 @@ def main():
         print(" Tura: " + str(tura))
         print("-" * 50)
         print("\n")
-        liczba_1 = random.randint(1, zakres)
-        liczba_2 = random.randint(1, zakres)
+        liczba_1 = random.randint(1, 101)
+        liczba_2 = random.randint(dol_granica, zakres)
         wynik = liczba_1 * liczba_2
 
         liczba_1 = str(liczba_1)
@@ -104,7 +121,7 @@ def main():
     srednia = il_powt / 2
     srednia_2 = il_powt / 3
 
-    print("*" * 150)
+    print("*" * 80)
     if blad > srednia:
         print("Słabo, musisz jeszcze poćwiczyć!!!")
     elif poprawne > srednia_2:
@@ -116,7 +133,7 @@ def main():
             "Pięknie, twoje obliczenia są bardzo dobre!!! Możesz pochwalić się rodzicom!!!"
         )
 
-    print("*" * 150)
+    print("*" * 80)
     sleep(10)
 
 
