@@ -132,7 +132,7 @@ class Program:
             print("\n\n")
             print("-" * 50)
 
-# %% definicja wyswietlenia statystyki
+#%% definicja wyswietlenia statystyki
     def statystyka(self):
         self.clear_mon()
         print("-" * 100)
@@ -162,9 +162,22 @@ class Program:
                 self.linia = "\n".join(self.list)
                 f = open("wyniki.txt", mode="w")
                 f.write(self.linia)
-                f.close()
+                f.close()  
+                # konczymy czy nie
+                self.koniec()              
+            else:
+                self.koniec()
+        else:
+            self.koniec()
 
-            self.koniec = input("?")
-
+#%% koniec ?
+    def koniec(self):
+        self.koniec = input("Koniec (t/n)?")
+        if self.koniec == "t" or self.koniec == "T" or self.koniec == "tak" or self.koniec == "Tak":
+            self.clear_mon()
+            sys.exit("Koniec programu")
+        else:
+            self.clear_mon()
+            Program()
 
 start = Program()
